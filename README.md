@@ -20,7 +20,7 @@ pip3 install -r requirements.txt
 ```
 
 ### Setup
-make a `.env` & add:
+Make an `.env` file & add:
 ```
 SQLALCHEMY_DATABASE_URI=sqlite:///database.db
 ```

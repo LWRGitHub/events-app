@@ -58,12 +58,22 @@ def rsvp(event_id):
         # events_attending, then commit to the database
         guest = Guest.query.filter_by(name=guest_name).one()
         guest.events_attending = event
+
+        db.session.commit()
         
     else:
         guest_email = request.form.get('email')
         guest_phone = request.form.get('phone')
         # Creates a new guest with the given name, email, and phone, and adds the event to their events_attending, then commits to the database
-        pass
+        new_guest = Guest(name=guest_name, email=guest_email, phone=guest_phone)
+
+        db.session.add(new_guest)
+        db.session.commit()
+
+        guest = Guest.query.filter_by(name=guest_name).one()
+        guest.events_attending = event
+
+        db.session.commit()
     
     flash('You have successfully RSVP\'d! See you there!')
     return redirect(url_for('main.event_detail', event_id=event_id))
@@ -86,6 +96,10 @@ def create():
             print('there was an error: incorrect datetime format')
 
         # Creates a new event with the given title, description, & datetime, then adds and commits to the database
+        new_event = Event(title=guest_name, description=guest_email, date_and_time=guest_phone)
+
+        db.session.add(new_event)
+        db.session.commit()
 
         flash('Event created.')
         return redirect(url_for('main.homepage'))
