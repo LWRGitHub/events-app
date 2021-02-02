@@ -1,21 +1,31 @@
 # Events App
 
-To run this code, start by cloning this repository to your computer. Then in a terminal, navigate to the project folder.
+This is an app where you can find, create or go to an even. There is a DB of guests & events, have fun!
 
-To install dependencies, run:
 
+## Technology Used
+
+- Flask
+- Jinja2
+- HTML/CSS
+- SQL
+- dotenv
+
+
+## Install/Setup
+
+### Install
 ```
 pip3 install -r requirements.txt
 ```
 
-Then rename the `.env.example` file as `.env`:
-
+### Setup
+make a `.env` & add:
 ```
-cp .env.example .env
+SQLALCHEMY_DATABASE_URI=sqlite:///database.db
 ```
 
-Then you can run the server:
-
+### Run:
 ```
 python3 app.py
 ```
