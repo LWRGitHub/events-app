@@ -29,3 +29,14 @@ SQLALCHEMY_DATABASE_URI=sqlite:///database.db
 ```
 python3 app.py
 ```
+
+## Img
+
+***Homepage***
+<img alt="Screenshot of the homepage, it has blocks that hold different events." src="https://github.com/lwrgithub/events-app/blob/master/events_app/static/img/home-pg.png" />
+
+***Event***
+<img alt="Screenshot of event page where you can add guests it has a form to do this." src="https://github.com/lwrgithub/events-app/blob/master/events_app/static/img/event-page.png" />
+
+***Guest***
+<img alt="Guest page, here you can view info about a specific guest such as email and phone." src="https://github.com/lwrgithub/events-app/blob/master/events_app/static/img/view-guest-page.png" />
