@@ -11,7 +11,7 @@ class Guest(db.Model):
     phone = db.Column(db.Integer, nullable=False)
 
     # - events_attending: relationship to "Event" table with a secondary table
-    events_attending = db.relationship('Event', back_populates='Guest')
+    events_attending = db.relationship('Event', secondary='guest_event_table', back_populates='guests')
 
     def __str__(self):
         return f'<Guest: {self.name}>'
@@ -33,11 +33,17 @@ class Event(db.Model):
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(80), nullable=False)
     date_and_time = db.Column(db.Integer, nullable=False)
-    guests = db.Column(db.String(80), nullable=False)
+    guests = db.relationship('Guest', secondary='guest_event_table', back_populates='events_attending')
 
     # `event_type` as an Enum column that denotes the
     # type of event 
     event_type = db.Column(db.Enum(Event_type), default=Event_type.ALL)
+
+    def __str__(self):
+        return f'<Event: {self.title}>'
+
+    def __repr__(self):
+        return f'<Event: {self.title}>'
 
 # Table `guest_event_table` with the following columns:
 guest_event_table = db.Table('guest_event_table',
